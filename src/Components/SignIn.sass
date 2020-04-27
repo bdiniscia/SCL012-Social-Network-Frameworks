@@ -8,7 +8,7 @@ $font-condensed: 'Open Sans Condensed', sans-serif
 $font-regular: 'Open Sans', sans-serif
 $border-grey: #b6b6b6 1px solid
 
-.containerSignIn
+.backgroungAuth
     width: 100%
     display: flex
     justify-content: center
@@ -17,7 +17,7 @@ $border-grey: #b6b6b6 1px solid
     font-family: $font-regular
     color: $dark-color
 
-.signIn
+.containerAuth
     background-color: $light-grey-color
     border-radius: $border-radius
     display: flex
@@ -47,16 +47,13 @@ $border-grey: #b6b6b6 1px solid
 
 .buttonAuth
     color: $dark-color
-    width: 50%
+    width: 15em
     padding: 0.5em
     margin-top: 1em
     font-size: 14px
     border: none
     font-weight: 400
     border-radius: $border-radius
-    
-.submitButton
-    background-color: $yellow-color
 
 .buttonGoogle
     border: $border-grey
@@ -79,9 +76,11 @@ $border-grey: #b6b6b6 1px solid
     margin-left: 6px
     align-self: center
 
+.toggleAuth
+    font-size: 14px
 
 @media (max-width: $mobile-width)
-    .signIn
+    .containerAuth
         width: 60%
 
 
