@@ -3,23 +3,24 @@ import Button from './Components/Button'
 import { Link } from "react-router-dom"
 import './SignIn.sass'
 
-export default class SignIn extends Component {
+
+export default class SignUp extends Component {
     render() {
         return (
-            <div className="backgroungAuth">
+            <div className='backgroungAuth'>
                 <div className='containerAuth'>
                     <img alt='Logo of Beer Me Up' src={require('../img/logoBeer.png')} className='logoAuth' />
-                    <h1 className='titleAuth'>Log In</h1>
+                    <h1 className='titleAuth'>Regístrate</h1>
+                    <input className='inputsAuth'  type='text' placeholder='Tu nombre'/>
                     <input className='inputsAuth'  type='email' placeholder='Tu correo electrónico'/>
                     <input className='inputsAuth'  type='password' placeholder='Tu contraseña'/>
-                    <Button title='Entrar'/>
-                    <a href='#' className='forgotPass' >Se me olvidó mi contraseña</a>
+                    <Button title='Registrarme'/>
                     <button className='buttonAuth buttonGoogle'>
-                        Log in con 
+                        Sign up con 
                         <img alt='Logo of Google' src={require('../img/google-G.png')} className='googleLogo' />
                     </button>
-                    <Link to='/SignUp'>
-                        <p className='forgotPass toggleAuth' >No tengo cuenta</p>
+                    <Link to='/SignIn'>
+                        <p className='forgotPass toggleAuth'>Ya tengo cuenta</p>
                     </Link>
                 </div>
             </div>
