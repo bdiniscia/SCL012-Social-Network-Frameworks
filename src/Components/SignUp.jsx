@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Button from './Components/Button'
 import { Link } from "react-router-dom"
-import { firebase, auth } from '../Firebase/ConfigFirebase'
+import { auth } from '../Firebase/ConfigFirebase'
 import './SignIn.sass'
 import { useSelector , useDispatch } from 'react-redux'
 import { signUpAction } from '../Actions/index'
@@ -12,9 +12,9 @@ const SignUp = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const actualUser = useSelector(state => state.currentUser)
     const dispatch = useDispatch()
 
+    // Maneja los cambios de los inputs del formulario
     const handleChange = (e) => {
         e.preventDefault()
         if (e.target.id === 'name') {
@@ -31,9 +31,9 @@ const SignUp = () => {
         }
     }
 
+    // Función que envía el mail a usuario que se regista
     const emailVerification = () => {
         const user = auth.currentUser;
-      
         user.sendEmailVerification()
           .then(() => {
             // Email sent.
@@ -45,25 +45,27 @@ const SignUp = () => {
           });
       };
 
+    // Función que inscribe al nuevo usuario
     const singUpNewUser = (email, password, name) => {
         auth.createUserWithEmailAndPassword(email, password)
           .then(result => result.user.updateProfile({
             displayName: name,
           }))
-          .then(() => dispatch(signUpAction({
+          .then(() => dispatch(signUpAction({ // Triggerea la acción de guardar el current User en el Store
             displayName : auth.currentUser.displayName,
             email: auth.currentUser.email,
             uid: auth.currentUser.uid,
             emailVerified: auth.currentUser.emailVerified,
             photoURL: auth.currentUser.photoURL}
             )))
-          .then(() => emailVerification())
-          .then(() => localStorage.setItem('user', JSON.stringify({
+          .then(() => emailVerification()) // Envía el email al usuario
+          .then(() => localStorage.setItem('user', JSON.stringify({  // Guarda el usuario en el LocalStorage
             displayName : auth.currentUser.displayName,
             email: auth.currentUser.email,
             uid: auth.currentUser.uid,
             emailVerified: auth.currentUser.emailVerified,
             photoURL: auth.currentUser.photoURL})))
+          .then(() => window.location.pathname = '/Home') // The redirige al Home
           .catch((error) => {
           // Handle Errors here.
             const errorCode = error.code;

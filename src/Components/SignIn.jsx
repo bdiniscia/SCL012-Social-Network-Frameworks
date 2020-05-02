@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Button from './Components/Button'
 import { Link } from "react-router-dom"
 import './SignIn.sass'
-import { firebase, auth } from '../Firebase/ConfigFirebase'
+import { auth } from '../Firebase/ConfigFirebase'
 
 const SignIn = () => {
     const [email, setEmail] = useState('')
@@ -28,16 +28,17 @@ const SignIn = () => {
                 uid: auth.currentUser.uid,
                 emailVerified: auth.currentUser.emailVerified,
                 photoURL: auth.currentUser.photoURL})))
-          .catch((error) => {
-          // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode);
-            console.log(errorMessage);
-            alert(errorMessage);
-          // ...
-          });
-      };
+            .then(() => window.location.pathname = '/Home')
+            .catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode);
+                console.log(errorMessage);
+                alert(errorMessage);
+            // ...
+            });
+    };
 
 
     return (
