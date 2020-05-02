@@ -8,7 +8,9 @@ const Welcome = () => {
     return (
         <div className='backgroungAuth'>
             <div className='containerAuth'>
-                <img alt='Logo of Beer Me Up' src={require('../img/logoBeer.png')} className='logoAuth' />
+                <Link to='/' className='link'>
+                  <img alt='Logo of Beer Me Up' src={require('../img/logoBeer.png')} className='logoAuth' />
+                </Link>
                 <h1 className='titleWelcome'>Tu red social de cervezas</h1>
                 <p className='textWelcome'>Comparte tus cervezas favoritas y encuentra nuevas con ayuda nuestra comunidad ¡Salud!<span role='img' aria-label='emoji of two beer mugs clinked together'>🍻</span></p>
                 <Link to='/SignUp'>

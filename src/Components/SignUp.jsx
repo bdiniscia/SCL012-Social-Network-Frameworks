@@ -86,7 +86,9 @@ const SignUp = () => {
     return (
         <div className='backgroungAuth'>
             <div className='containerAuth'>
-                <img alt='Logo of Beer Me Up' src={require('../img/logoBeer.png')} className='logoAuth' />
+                <Link to='/' className='link'>
+                  <img alt='Logo of Beer Me Up' src={require('../img/logoBeer.png')} className='logoAuth' />
+                </Link>
                 <h1 className='titleAuth'>Regístrate</h1>
                 <input className='inputsAuth'  id='name' type='text' placeholder='Tu nombre' onChange={e => handleChange(e)}/>
                 <input className='inputsAuth'  id='email' type='email' placeholder='Tu correo electrónico' onChange={e => handleChange(e)}/>
