@@ -19,29 +19,29 @@ function App() {
   const dispatch = useDispatch()
   const [firebaseUser, setFirebaseUser] = React.useState(false)
 
-    React.useEffect(() => {
-      console.log('1. Entrando al UseEffect')
-      const fetchUser = () => {
-        auth.onAuthStateChanged(user => {
-            if(user){
-              console.log('2. Entrando al IF del UseEffect')
-                setFirebaseUser({
-                  displayName : user.displayName,
-                  email: user.email,
-                  uid: user.uid,
-                  emailVerified: user.emailVerified,
-                  photoURL: user.photoURL})
-            }else{
-                setFirebaseUser({})
-            }
-        })
-      }
-      fetchUser()
-    }, [])
+  React.useEffect(() => {
+    console.log('1. Entrando al UseEffect')
+    const fetchUser = () => {  // Consigue el currentUser
+      auth.onAuthStateChanged(user => {
+          if(user){
+            console.log('2. Entrando al IF del UseEffect')
+              setFirebaseUser({ // La guarda en un estado
+                displayName : user.displayName, 
+                email: user.email,
+                uid: user.uid,
+                emailVerified: user.emailVerified,
+                photoURL: user.photoURL})
+          }else{
+              setFirebaseUser({})
+          }
+      })
+    }
+    fetchUser()
+  }, [])
 
-    const getUserToStore = () => dispatch(signUpAction(firebaseUser))
-    getUserToStore();
-
+  // Esta función triggerea la actualización de currentUser del State con lo recogido de firebaseUser
+  const getUserToStore = () => dispatch(signUpAction(firebaseUser))
+  getUserToStore();
 
   const RutaPrivada = ({component, path, ...rest}) => {
     const userLocal = localStorage.getItem('user')
@@ -51,7 +51,6 @@ function App() {
       return <Redirect to="/SignUp" {...rest} />
     }
   }
-
 
   return (
     <div className="App">
