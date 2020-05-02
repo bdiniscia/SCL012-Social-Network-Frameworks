@@ -1,12 +1,4 @@
-
-$light-grey-color: #f0f0f0
-$yellow-color: #fac937
-$border-radius: 8px
-$dark-color: #111106
-$mobile-width: 650px
-$font-condensed: 'Open Sans Condensed', sans-serif
-$font-regular: 'Open Sans', sans-serif
-$border-grey: #b6b6b6 1px solid
+@import '../variables'
 
 .backgroungAuth
     width: 100%
@@ -23,7 +15,7 @@ $border-grey: #b6b6b6 1px solid
     display: flex
     flex-direction: column
     padding: 1em
-    width: 35%
+    width: 350px
     align-items: center
 
 .logoAuth
@@ -67,9 +59,8 @@ $border-grey: #b6b6b6 1px solid
     margin-top: 0.5em
     text-decoration: none
     color: #717171
-
-.forgotPass:hover
-    color: $dark-color
+    &:hover
+        color: $dark-color
 
 .googleLogo
     width: 1em
