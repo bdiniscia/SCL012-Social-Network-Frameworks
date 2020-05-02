@@ -10,8 +10,8 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import { firebase, auth } from './Firebase/ConfigFirebase'
-import { useSelector , useDispatch } from 'react-redux'
+import { auth } from './Firebase/ConfigFirebase'
+import { useDispatch } from 'react-redux'
 import { signUpAction } from './Actions/index'
 import ForgotPassword from './Components/ForgotPassword';
 
@@ -44,7 +44,7 @@ function App() {
   const getUserToStore = () => dispatch(signUpAction(firebaseUser))
   getUserToStore();
 
-  const RutaPrivada = ({component, path, ...rest}) => {
+  const PrivateRoute = ({component, path, ...rest}) => {
     const userLocal = localStorage.getItem('user')
     if(userLocal){
       return <Route component={component} path={path} {...rest} />
@@ -69,9 +69,9 @@ function App() {
             <Route path="/ForgotPassword">
               <ForgotPassword />
             </Route>
-            <RutaPrivada path="/Home">
+            <PrivateRoute path="/Home">
               <Home />
-            </RutaPrivada>
+            </PrivateRoute>
           </Switch>
       </Router>    
     </div>

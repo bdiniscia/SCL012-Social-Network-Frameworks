@@ -5,6 +5,10 @@ import { firebase, auth } from '../Firebase/ConfigFirebase'
 
 const Home = () => {
 
+    React.useEffect(() => {
+        
+    })
+
     // Función que cierra sesión
     const closeSession = () => {
         auth.signOut()
