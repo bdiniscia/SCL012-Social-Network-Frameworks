@@ -13,6 +13,7 @@ import {
 import { firebase, auth } from './Firebase/ConfigFirebase'
 import { useSelector , useDispatch } from 'react-redux'
 import { signUpAction } from './Actions/index'
+import ForgotPassword from './Components/ForgotPassword';
 
 function App() {
 
@@ -64,6 +65,9 @@ function App() {
             </Route>
             <Route path="/SignIn">
               <SignIn />
+            </Route>
+            <Route path="/ForgotPassword">
+              <ForgotPassword />
             </Route>
             <RutaPrivada path="/Home">
               <Home />

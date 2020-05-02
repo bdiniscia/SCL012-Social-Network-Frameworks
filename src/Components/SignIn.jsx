@@ -44,12 +44,16 @@ const SignIn = () => {
     return (
         <div className="backgroungAuth">
             <div className='containerAuth'>
-                <img alt='Logo of Beer Me Up' src={require('../img/logoBeer.png')} className='logoAuth' />
+                <Link to='/' className='link'>
+                  <img alt='Logo of Beer Me Up' src={require('../img/logoBeer.png')} className='logoAuth' />
+                </Link>
                 <h1 className='titleAuth'>Log In</h1>
                 <input className='inputsAuth'  id='email' type='email' placeholder='Tu correo electrónico' onChange={ e => handleChange(e)}/>
                 <input className='inputsAuth'  id='password' type='password' placeholder='Tu contraseña' onChange={ e => handleChange(e)}/>
                 <Button title='Entrar' onClick={() => signInUser(email, password)}/>
-                <p className='forgotPass' >Se me olvidó mi contraseña</p>
+                <Link to='/ForgotPassword'>
+                    <p className='forgotPass' >Olvidé mi contraseña</p>
+                </Link>
                 <button className='buttonAuth buttonGoogle'>
                     Log in con 
                     <img alt='Logo of Google' src={require('../img/google-G.png')} className='googleLogo' />
