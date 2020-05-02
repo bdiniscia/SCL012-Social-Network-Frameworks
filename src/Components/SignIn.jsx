@@ -2,11 +2,14 @@ import React, { useState } from 'react'
 import Button from './Components/Button'
 import { Link } from "react-router-dom"
 import './SignIn.sass'
-import { auth } from '../Firebase/ConfigFirebase'
+import { firebase, auth } from '../Firebase/ConfigFirebase'
+import { useDispatch } from 'react-redux'
+import { signUpAction } from '../Actions/index'
 
 const SignIn = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const dispatch = useDispatch()
 
     const handleChange = (e) => {
         e.preventDefault()
@@ -40,6 +43,35 @@ const SignIn = () => {
             });
     };
 
+    const signUpGoogle = () => {
+        const provider = new firebase.auth.GoogleAuthProvider();
+      
+        auth.signInWithPopup(provider)
+        .then((result) => {
+          // ...
+        })
+        .then (() => dispatch(signUpAction({ // Triggerea la acción de guardar el current User en el Store
+          displayName : auth.currentUser.displayName,
+          email: auth.currentUser.email,
+          uid: auth.currentUser.uid,
+          emailVerified: auth.currentUser.emailVerified,
+          photoURL: auth.currentUser.photoURL}
+          )))
+        .then(() => localStorage.setItem('user', JSON.stringify({  // Guarda el usuario en el LocalStorage
+          displayName : auth.currentUser.displayName,
+          email: auth.currentUser.email,
+          uid: auth.currentUser.uid,
+          emailVerified: auth.currentUser.emailVerified,
+          photoURL: auth.currentUser.photoURL})))
+        .then(() => window.location.pathname = '/Home') // The redirige al Home
+        .catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage)
+        });
+      };
+
 
     return (
         <div className="backgroungAuth">
@@ -54,7 +86,7 @@ const SignIn = () => {
                 <Link to='/ForgotPassword'>
                     <p className='forgotPass' >Olvidé mi contraseña</p>
                 </Link>
-                <button className='buttonAuth buttonGoogle'>
+                <button className='buttonAuth buttonGoogle' onClick={() => signUpGoogle()}>
                     Log in con 
                     <img alt='Logo of Google' src={require('../img/google-G.png')} className='googleLogo' />
                 </button>
