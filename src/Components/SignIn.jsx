@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Button from './Components/Button'
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import './SignIn.sass'
 import { firebase, auth } from '../Firebase/ConfigFirebase'
 import { useDispatch } from 'react-redux'
@@ -10,6 +10,7 @@ const SignIn = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const dispatch = useDispatch()
+    let history = useHistory()
 
     const handleChange = (e) => {
         e.preventDefault()
@@ -31,7 +32,7 @@ const SignIn = () => {
                 uid: auth.currentUser.uid,
                 emailVerified: auth.currentUser.emailVerified,
                 photoURL: auth.currentUser.photoURL})))
-            .then(() => window.location.pathname = '/Home')
+            .then(() => history.push('/Home'))
             .catch((error) => {
                 // Handle Errors here.
                 const errorCode = error.code;
@@ -63,7 +64,7 @@ const SignIn = () => {
           uid: auth.currentUser.uid,
           emailVerified: auth.currentUser.emailVerified,
           photoURL: auth.currentUser.photoURL})))
-        .then(() => window.location.pathname = '/Home') // The redirige al Home
+        .then(() => history.push('/Home')) // The redirige al Home
         .catch((error) => {
           // Handle Errors here.
           const errorCode = error.code;

@@ -1,29 +1,48 @@
 import React, { useState } from 'react'
-import Button from './Components/Button'
-import { firebase, auth } from '../Firebase/ConfigFirebase'
 import Navbar from './Navbar'
+import CardPost from './Components/CardPost'
+import './Home.sass'
 
 
 const Home = () => {
 
-    // Función que cierra sesión
-    const closeSession = () => {
-        auth.signOut()
-        .then(() => {
-            console.log('Saliendo');
-            localStorage.removeItem('user')
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-    };
-
     return (
         <div>
             <Navbar />
-            <h1>Home de la web</h1>
-            <Button title='Cerrar Sesión' onClick={() => closeSession()}/>
-
+            <section className='containerPosts'>
+                <CardPost 
+                    img={require('../img/img-post.jpg')} 
+                    profilePic={require('../img/user.png')} 
+                    author='Bdiniscia' 
+                    likes='12' 
+                    content='Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque gravida justo a pulvinar' 
+                    tags='#Artesanal'
+                />
+                <CardPost 
+                    img={require('../img/img-post.jpg')} 
+                    profilePic={require('../img/user.png')} 
+                    author='Bdiniscia' 
+                    likes='12' 
+                    content='Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque gravida justo a pulvinar' 
+                    tags='#Artesanal'
+                />
+                <CardPost 
+                    img={require('../img/img-post.jpg')} 
+                    profilePic={require('../img/user.png')} 
+                    author='Bdiniscia' 
+                    likes='12' 
+                    content='Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque gravida justo a pulvinar' 
+                    tags='#Artesanal'
+                />
+                <CardPost 
+                    img={require('../img/img-post.jpg')} 
+                    profilePic={require('../img/user.png')} 
+                    author='Bdiniscia' 
+                    likes='12' 
+                    content='Lorem ipsum dolor sit amet, consectetur adipiscing elit. In scelerisque gravida justo a pulvinar' 
+                    tags='#Artesanal'
+                />
+            </section>
         </div>
     )
 }
