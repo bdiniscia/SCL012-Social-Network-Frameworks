@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import Button from './Components/Button'
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import { firebase, auth } from '../Firebase/ConfigFirebase'
 import './SignIn.sass'
 import { useDispatch } from 'react-redux'
 import { signUpAction } from '../Actions/index'
+import { emailVerification } from '../Firebase/FirebaseFunctions'
 
 
 const SignUp = () => {
@@ -13,6 +14,7 @@ const SignUp = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
+  let history = useHistory()
 
   // Maneja los cambios de los inputs del formulario
   const handleChange = (e) => {
@@ -31,19 +33,6 @@ const SignUp = () => {
     }
   }
 
-  // Función que envía el mail a usuario que se regista
-  const emailVerification = () => {
-    const user = auth.currentUser;
-    user.sendEmailVerification()
-      .then(() => {
-        // Email sent.
-        console.log('Enviando correo...');
-      })
-      .catch((error) => {
-        // An error happened.
-        console.log(error);
-      });
-  };
 
   // Función que inscribe al nuevo usuario
   const singUpNewUser = (email, password, name) => {
@@ -67,7 +56,7 @@ const SignUp = () => {
         emailVerified: auth.currentUser.emailVerified,
         photoURL: auth.currentUser.photoURL
       })))
-      .then(() => window.location.pathname = '/Home') // The redirige al Home
+      .then(() => history.push('/Home')) // The redirige al Home
       .catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
@@ -104,7 +93,7 @@ const SignUp = () => {
         emailVerified: auth.currentUser.emailVerified,
         photoURL: auth.currentUser.photoURL
       })))
-      .then(() => window.location.pathname = '/Home') // The redirige al Home
+      .then(() => history.push('/Home')) // The redirige al Home
       .catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
