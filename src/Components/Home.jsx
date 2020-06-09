@@ -1,3 +1,5 @@
+import StackGrid from "react-stack-grid";
+
 import React, { useState, useEffect } from 'react'
 import Navbar from './Navbar'
 import CardPost from './Components/CardPost'
@@ -42,21 +44,26 @@ const Home = () => {
             <Navbar showCreatePost={showCreatePost} showModal={() => showModal()}/>
             {showCreatePost && <Modal closeModal={() => closeModal()}/> }
             <section className='containerPosts'>
-                { beerPost &&
-                beerPost.map(post => {
-                    return (
-                        <CardPost 
-                            key = { post.id }
-                            img={post.dataBeer.img} 
-                            profilePic={post.dataBeer.user.photoURL} 
-                            author={post.dataBeer.user.displayName} 
-                            likes='12' 
-                            content={post.dataBeer.text}
-                            tags='#Artesanal'
-                        />
-                    )
-                })
-                }
+                <StackGrid
+                    columnWidth={260}
+                    monitorImagesLoaded={true}
+                >
+                    { beerPost &&
+                    beerPost.map(post => {
+                        return (
+                            <CardPost 
+                                key = { post.id }
+                                img={post.dataBeer.img} 
+                                profilePic={post.dataBeer.user.photoURL} 
+                                author={post.dataBeer.user.displayName} 
+                                likes='12' 
+                                content={post.dataBeer.text}
+                                tags='#Artesanal'
+                            />
+                        )
+                    })
+                    }
+                </StackGrid>
             </section>
         </div>
     )
