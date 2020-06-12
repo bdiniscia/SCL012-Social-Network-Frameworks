@@ -1,11 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import './CardPost.sass'
 
-const CardPost = ({img, profilePic, author, likes, content, tags}) => {
+const CardPost = ({img, profilePic, author, likes, content, tags, zoom}) => {
     return (
         <div className='divPost'>
-            <img alt='Pic of the post' src={img} className='imgPost' />
+            <img alt='Pic of the post' src={img} className='imgPost' onClick={zoom}/>
             <div className='contentPost'>
                 <div className='idPost flexRow'>
                     <div className='authorDiv flexRow'>
@@ -18,7 +18,7 @@ const CardPost = ({img, profilePic, author, likes, content, tags}) => {
                     </div>
                 </div>
                 <p className='textPost margin0'>{content}</p>
-                <p className='tagsPost'>{tags}</p>
+                {tags && <p className='tagsPost'>{tags}</p>}
             </div>
         </div>
     )

@@ -1,8 +1,17 @@
 @import '../variables'
 
+@mixin inputModal
+    border: none
+    border-radius: $border-radius
+    padding: 1em
+    resize: none
+    background-color: $light-grey-color
+    font-size: 13px
+    font-family: $font-regular
+
 .modal
     position: fixed
-    z-index: 2
+    z-index: 10
     padding-top: 100px
     left: 0
     top: 0
@@ -26,14 +35,8 @@
     justify-content: space-between
 
 .textareaModal
-    border: none
-    border-radius: $border-radius
-    padding: 1em
-    resize: none
+    @include inputModal()
     height: 6em
-    background-color: $light-grey-color
-    font-size: 13px
-    font-family: $font-regular
 
 .sendButton
     width: 2em
@@ -52,4 +55,14 @@
         color: $medium-grey
         text-decoration: none
         cursor: pointer
-    
+
+.file-div
+    display: flex
+    margin-top: 0.7em
+    align-items: center
+    font-size: 12px
+
+.tag-post
+    @include inputModal()
+    font-size: 10px
+    margin: 0 1em

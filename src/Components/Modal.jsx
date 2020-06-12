@@ -6,13 +6,21 @@ import { useSelector, useDispatch } from 'react-redux'
 const Modal = (props) => {
 
     const [textPost, setTextPost] = useState('')
+    const [tagPost, setTagPost] = useState('')
     const [imagePost, setImagePost] = useState('')
+    const [progress, setProgress] = useState(0)
     const currentUser = useSelector(state => state.currentUser)
 
     const handleChangeText = (e) => {
         e.preventDefault()
         const text = e.target.value
         setTextPost(text)
+    }
+
+    const handleChangeTag = (e) => {
+        e.preventDefault()
+        const text = e.target.value
+        setTagPost(text)
     }
 
     const handleChangeImage = (e) => {
@@ -31,14 +39,16 @@ const Modal = (props) => {
             uploadTask.on('state_changed', 
             (snapshot) => {
                 // progress function
+                const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                setProgress(progress);
             }, (error) => {
                 // error function
-                console.log(error)
-                return reject(error)
+                console.log(error);
+                return reject(error);
             }, () => {
                 // complete function
                 storage.ref('images').child(image.name).getDownloadURL().then(url => {
-                    return resolve(url)
+                    return resolve(url);
                 })
             })
         })
@@ -52,6 +62,7 @@ const Modal = (props) => {
                     text: textPost,
                     time: new Date(),
                     img: photo,
+                    tag: tagPost
                 })
             })
             .then(() => {
@@ -69,7 +80,14 @@ const Modal = (props) => {
             <div className="modal-content">
                 <span className="close" onClick={props.closeModal}>&times;</span>
                 <textarea onChange={e => handleChangeText(e)} className='textareaModal' placeholder='Cuéntanos... ¿Qué tal tu cerveza de hoy?'/>
-                <input type='file' onChange={e => handleChangeImage(e)}/>
+                <div className='file-div'>
+                    <label name="tag-post" >Etiqueta: </label>
+                    <input name="tag-post" onChange={e => handleChangeTag(e)} className="tag-post" type="text" placeholder="Ejemplo: #Artesanal"/>
+                </div>
+                <div className='file-div'>
+                    <input type='file' onChange={e => handleChangeImage(e)}/>
+                    <progress value={progress} max="100" />
+                </div>
                 <img alt='Save post' src={require('../img/send.png')} onClick={() => savePost()} className='sendButton'/>
             </div>
         </div>
