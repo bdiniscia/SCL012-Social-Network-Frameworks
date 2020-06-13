@@ -1,18 +1,17 @@
 @import '../../variables'       
 
 .divPost
-    width: 15em
+    width: 260px
     background-color: $light-grey-color
     display: flex
     flex-direction: column
-    margin: 1em
     color: $dark-color
 
 .imgPost
-    width: 15em
+    width: 260px
 
 .contentPost
-    padding: 0.8em 0.8em
+    padding: 0.8em 0.8em 1.2em 0.8em
 
 .flexRow
     @include flexRow()
@@ -29,8 +28,11 @@
     font-family: $font-regular
     color: #b6b6b6
     font-size: 13px
+    margin: 1em 0 0 0
     &:hover
         color: $dark-color
+    &::before
+        content: '#'    
 
 .userPicPost
     height: 1.5em
