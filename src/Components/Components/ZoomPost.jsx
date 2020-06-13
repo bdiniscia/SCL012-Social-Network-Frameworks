@@ -2,6 +2,7 @@ import React from 'react'
 import './ZoomPost.sass'
 
 const ZoomPost = (props) => {
+    
     return (
         <div className='overlayZoom'>
             <div className='divZoom'>
@@ -10,7 +11,11 @@ const ZoomPost = (props) => {
                 <div className='contentPost contentZoom'>
                     <div className='idPost flexRow'>
                         <div className='authorDiv flexRow'>
+                            {props.post.dataBeer.user.photoURL ?
                             <img alt='Profile pic of the author' src={props.post.dataBeer.user.photoURL} className='userPicPost' />
+                            :
+                            <img alt='Profile pic of the author' src={require('../../img/user.png')} className='userPicPost' />
+                            }
                             <h5 className='authorPost margin0'>{props.post.dataBeer.user.displayName}</h5>
                         </div>
                         <div className='likesDiv flexRow'>

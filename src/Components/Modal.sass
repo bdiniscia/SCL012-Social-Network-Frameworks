@@ -29,6 +29,7 @@
     border-radius: $border-radius
     width: 40%
     font-family: $font-regular
+    max-width: 500px
 
 .headerModal
     display: flex
@@ -66,3 +67,7 @@
     @include inputModal()
     font-size: 10px
     margin: 0 1em
+
+@media screen and (max-width: 550px)
+    .modal-content 
+        width: 80%

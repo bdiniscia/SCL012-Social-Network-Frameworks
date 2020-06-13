@@ -6,6 +6,7 @@
     position: fixed
     display: flex
     justify-content: center
+    padding-top: 0.5em
 
 .divZoom
     z-index: 15
@@ -15,6 +16,7 @@
     height: 100%
     max-width: 90%
     position: fixed
+    max-height: 90%
 
 .imgZoom
     max-height: 70%
@@ -36,5 +38,9 @@
     cursor: pointer
     font-weight: bold
 
+.textPost.margin0
+    max-width: fit-content;
+
 @media screen and (max-width: 500px)
     .divZoom
+        height: 88%

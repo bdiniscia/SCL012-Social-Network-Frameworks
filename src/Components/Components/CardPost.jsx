@@ -5,11 +5,15 @@ import './CardPost.sass'
 const CardPost = ({img, profilePic, author, likes, content, tags, zoom}) => {
     return (
         <div className='divPost'>
-            <img alt='Pic of the post' src={img} className='imgPost' onClick={zoom}/>
+            <img alt='Pic of the post' src={img} className='imgPost' onClick={zoom}/>    
             <div className='contentPost'>
                 <div className='idPost flexRow'>
                     <div className='authorDiv flexRow'>
+                        {profilePic ?
                         <img alt='Profile pic of the author' src={profilePic} className='userPicPost' />
+                        :
+                        <img alt='Profile pic of the author' src={require('../../img/user.png')} className='userPicPost' />
+                        }
                         <h5 className='authorPost margin0'>{author}</h5>
                     </div>
                     <div className='likesDiv flexRow'>
