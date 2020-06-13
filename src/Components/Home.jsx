@@ -10,7 +10,6 @@ import ZoomPost from './Components/ZoomPost';
 
 
 const Home = () => {
-
     const [ showCreatePost, setShowCreatPost ] = useState(false);
     const [ beerPost, setBeerPost ] = useState(false);
     const [ infoZoom, setInfoZoom ] = useState(null);
