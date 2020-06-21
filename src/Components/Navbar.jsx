@@ -3,6 +3,9 @@ import './Navbar.sass'
 import { useSelector } from 'react-redux'
 import defaultProfilePic from '../img/user.png'
 import { closeSession } from '../Firebase/FirebaseFunctions'
+import SvgPlus from './Components/Plus'
+import Heart from './Components/Heart'
+import SvgStar from './Components/Star'
 
 const Navbar = (props) => {
 
@@ -21,9 +24,9 @@ const Navbar = (props) => {
             <nav className='divNavbar'>
                 <img alt='Logo of Beer Me Up' src={require('../img/logoBeerWhite.png')} className='logoNavbar' />
                 <div className='divIconsNavbar'>
-                    <img alt='Add new post' onClick={props.showModal} src={require('../img/plus.png')} className='iconsNavbar' />
-                    <img alt='Liked posts' src={require('../img/heart.png')} className='iconsNavbar' />
-                    <img alt='Top beers of the community' src={require('../img/star.png')} className='iconsNavbar' />
+                    <SvgPlus onClick={props.showModal} className='svgNavbar' />
+                    <Heart className='svgNavbar' width="2.3em" height="2.3em"/>
+                    <SvgStar className='svgNavbar' />
                     <div className='dropdown'>
                         <img alt='Profile' src={photoURL} className='iconsNavbar picProfile' />
                         <div className="dropdown-content">
@@ -34,9 +37,9 @@ const Navbar = (props) => {
                 </div>
             </nav>
             <nav className='bottomNavbar'>
-                <img alt='Add new post' onClick={props.showModal} src={require('../img/plus.png')} className='iconsNavbar' />
-                <img alt='Liked posts' src={require('../img/heart.png')} className='iconsNavbar' />
-                <img alt='Top beers of the community' src={require('../img/star.png')} className='iconsNavbar' />
+                <SvgPlus onClick={props.showModal} className='svgNavbar' />
+                <Heart className='svgNavbar' width="2.3em" height="2.3em"/>
+                <SvgStar className='svgNavbar' />
             </nav>
         </Fragment>
 

@@ -4,3 +4,10 @@ export const signUpAction = (user) => {
         payload: user
     }
 }
+
+export const postAction = (posts) => {
+    return {
+        type: 'POSTS',
+        payload: posts
+    }
+}

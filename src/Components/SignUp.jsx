@@ -33,9 +33,11 @@ const SignUp = () => {
     }
   }
 
-
   // Función que inscribe al nuevo usuario
   const singUpNewUser = (email, password, name) => {
+    if (name == '') {
+      return alert('Introduzca un nombre válido');
+    }
     auth.createUserWithEmailAndPassword(email, password)
       .then(result => result.user.updateProfile({
         displayName: name,
@@ -109,9 +111,9 @@ const SignUp = () => {
           <img alt='Logo of Beer Me Up' src={require('../img/logoBeer.png')} className='logoAuth' />
         </Link>
         <h1 className='titleAuth'>Regístrate</h1>
-        <input className='inputsAuth' id='name' type='text' placeholder='Tu nombre' onChange={e => handleChange(e)} />
-        <input className='inputsAuth' id='email' type='email' placeholder='Tu correo electrónico' onChange={e => handleChange(e)} />
-        <input className='inputsAuth' id='password' type='password' placeholder='Tu contraseña' onChange={e => handleChange(e)} />
+        <input className='inputsAuth' id='name' type='text' placeholder='Tu nombre' onChange={e => handleChange(e)} required />
+        <input className='inputsAuth' id='email' type='email' placeholder='Tu correo electrónico' onChange={e => handleChange(e)} required />
+        <input className='inputsAuth' id='password' type='password' placeholder='Tu contraseña' onChange={e => handleChange(e)} required />
         <Button title='Registrarme' onClick={() => singUpNewUser(email, password, name)} />
         <button className='buttonAuth buttonGoogle' onClick={() => signUpGoogle()}>
           Sign up con

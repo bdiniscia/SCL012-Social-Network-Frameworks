@@ -22,6 +22,10 @@
 
 .iconsNavbar
     height: 2.3em
+
+.svgNavbar
+    &:hover
+        fill: $yellow-color
   
 .svgIcons
     fill: #fff
@@ -51,6 +55,7 @@
         padding: 12px 16px
         display: block
         margin: 0
+        cursor: pointer
 
 .dropdown-content 
     p
@@ -78,7 +83,7 @@
         justify-content: space-around
         align-items: center
     
-    .divIconsNavbar > img
+    .divIconsNavbar > .svgNavbar
         display: none
 
     .divIconsNavbar

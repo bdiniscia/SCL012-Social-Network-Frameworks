@@ -1,4 +1,5 @@
 import StackGrid from "react-stack-grid";
+import { useSelector, useDispatch } from 'react-redux';
 
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
@@ -7,13 +8,18 @@ import './Home.sass';
 import Modal from './Modal';
 import { db } from '../Firebase/ConfigFirebase';
 import ZoomPost from './Components/ZoomPost';
+import { postAction } from '../Actions/index'
 
 
 const Home = () => {
     const [ showCreatePost, setShowCreatPost ] = useState(false);
-    const [ beerPost, setBeerPost ] = useState(false);
+    // const [ beerPost, setBeerPost ] = useState(false);
     const [ infoZoom, setInfoZoom ] = useState(null);
-    const [ showZoom, setShowZoom ] = useState(false)
+    const [ showZoom, setShowZoom ] = useState(false);
+    const dispatch = useDispatch();
+    const currentUser = useSelector(state => state.currentUser);
+    const postsStore = useSelector(state => state.posts);
+
 
     // Trae los posts de Firebase
     useEffect(() => {
@@ -25,29 +31,28 @@ const Home = () => {
                 const infoPost =
                 {
                     dataBeer: doc.data(),
-                    id: doc.id
+                    id: doc.id,
+                    currentUser: currentUser.uid,
                 }
                 posts.push(infoPost);
             });
-
-            setBeerPost(posts)
-            console.log(posts)
+            dispatch(postAction(posts));
+            console.log('to zoom',posts);
         });
     }, [])
 
     // Muestra o esconde el modal
     const showModal = (boolean) => {
-        setShowCreatPost(boolean)
+        setShowCreatPost(boolean);
     }
 
     const showIndividualPost = (boolean) => {
-        setShowZoom(boolean)
+        setShowZoom(boolean);
     }
 
-    const openZoom = (post) => {
-        console.log('>>From openZoom', post)
-        setInfoZoom(post)
-        showIndividualPost(true)
+    const openZoom = (index) => {
+        setInfoZoom(index);
+        showIndividualPost(true);
     }
 
     return (
@@ -60,8 +65,8 @@ const Home = () => {
                     columnWidth={260}
                     monitorImagesLoaded={true}
                 >
-                    {beerPost &&
-                        beerPost.map(post => {
+                    {postsStore  &&
+                        postsStore.map((post, i) => {
                             return (
                                 <CardPost
                                     key={post.id}
@@ -70,7 +75,10 @@ const Home = () => {
                                     author={post.dataBeer.user.displayName}
                                     content={post.dataBeer.text}
                                     tags={post.dataBeer.tag}
-                                    zoom={() => openZoom(post)}
+                                    zoom={() => openZoom(i)}
+                                    likes={post.dataBeer.like}
+                                    id={post.id}
+                                    currentUser={currentUser.uid}
                                 />
                             )
                         })
