@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Modal.sass'
 import { db, storage } from '../Firebase/ConfigFirebase'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 const Modal = (props) => {
 
@@ -62,7 +62,8 @@ const Modal = (props) => {
                     text: textPost,
                     time: new Date(),
                     img: photo,
-                    tag: tagPost
+                    tag: tagPost,
+                    like: []
                 })
             })
             .then(() => {

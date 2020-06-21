@@ -57,21 +57,11 @@ function App() {
     <div className="App">
        <Router>
           <Switch>
-            <Route exact path="/">
-              <Welcome />
-            </Route>
-            <Route path="/SignUp">
-              <SignUp />
-            </Route>
-            <Route path="/SignIn">
-              <SignIn />
-            </Route>
-            <Route path="/ForgotPassword">
-              <ForgotPassword />
-            </Route>
-            <PrivateRoute path="/Home">
-              <Home />
-            </PrivateRoute>
+            <Route exact path="/" component={Welcome} />
+            <Route path="/SignUp" component={SignUp} />
+            <Route path="/SignIn" component={SignIn} />
+            <Route path="/ForgotPassword" component={ForgotPassword} />
+            <PrivateRoute path="/Home" component={Home} />
           </Switch>
       </Router>    
     </div>
