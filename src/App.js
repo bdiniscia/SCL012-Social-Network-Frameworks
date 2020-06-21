@@ -54,7 +54,7 @@ function App() {
 
   const allPosts = db.collection('posts').orderBy('time', 'desc');
   const popularPosts = db.collection('posts').orderBy('like', 'desc');
-  
+
 
   return (
     <div className='App'>
@@ -65,9 +65,9 @@ function App() {
             <Route path='/SignIn' component={SignIn} />
             <Route path='/ForgotPassword' component={ForgotPassword} />
             <PrivateRoute path='/Home'
-              component={() => <Home postsToRender={allPosts} />} />
+              component={() => <Home postsToRender={allPosts} title={`¡Bienvenido/a! ¿Listo/a para una birra?`}/>} />
             <PrivateRoute path='/MostPopular'
-              component={() => <Home postsToRender={popularPosts} />} />
+              component={() => <Home postsToRender={popularPosts} title={`Posts más populares`} />} />
           </Switch>
       </Router>    
     </div>

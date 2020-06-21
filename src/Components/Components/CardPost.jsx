@@ -29,7 +29,7 @@ const CardPost = ({img, profilePic, author, likes, content, tags, zoom, id, curr
                     </div>
                 </div>
                 <p className='textPost margin0'>{content}</p>
-                {tags && <p className='tagsPost'>{tags}</p>}
+                {/* {tags && <p className='tagsPost'>{tags}</p>} */}
             </div>
         </div>
     )

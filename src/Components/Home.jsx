@@ -11,7 +11,7 @@ import ZoomPost from './Components/ZoomPost';
 import { postAction } from '../Actions/index'
 
 
-const Home = ({postsToRender, ...props}) => {
+const Home = ({postsToRender, title}) => {
     const [ showCreatePost, setShowCreatPost ] = useState(false);
     // const [ beerPost, setBeerPost ] = useState(false);
     const [ infoZoom, setInfoZoom ] = useState(null);
@@ -60,6 +60,7 @@ const Home = ({postsToRender, ...props}) => {
             {showCreatePost && <Modal closeModal={() => showModal(false)} />}
             {showZoom && <ZoomPost post={infoZoom} closeZoom={() => showIndividualPost(false)}/>}
             <section className='containerPosts'>
+                <h1 className='titleHome'>{title}</h1>
                 <StackGrid
                     columnWidth={260}
                     monitorImagesLoaded={true}
