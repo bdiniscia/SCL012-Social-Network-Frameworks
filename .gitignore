@@ -67,3 +67,6 @@ node_modules/
 .DS_Store
 
 ./src/Firebase/ConfigFirebase.jsx
+
+# Local Netlify folder
+.netlify

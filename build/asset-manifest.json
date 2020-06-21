@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/SCL012-Social-Network-Frameworks/static/css/main.53fcdcc1.chunk.css",
-    "main.js": "/SCL012-Social-Network-Frameworks/static/js/main.e1cfe567.chunk.js",
-    "main.js.map": "/SCL012-Social-Network-Frameworks/static/js/main.e1cfe567.chunk.js.map",
-    "runtime-main.js": "/SCL012-Social-Network-Frameworks/static/js/runtime-main.6d0256c7.js",
-    "runtime-main.js.map": "/SCL012-Social-Network-Frameworks/static/js/runtime-main.6d0256c7.js.map",
-    "static/js/2.77259712.chunk.js": "/SCL012-Social-Network-Frameworks/static/js/2.77259712.chunk.js",
-    "static/js/2.77259712.chunk.js.map": "/SCL012-Social-Network-Frameworks/static/js/2.77259712.chunk.js.map",
-    "index.html": "/SCL012-Social-Network-Frameworks/index.html",
-    "precache-manifest.30976e57bc95a189dd36028c1ddc91cd.js": "/SCL012-Social-Network-Frameworks/precache-manifest.30976e57bc95a189dd36028c1ddc91cd.js",
-    "service-worker.js": "/SCL012-Social-Network-Frameworks/service-worker.js",
-    "static/css/main.53fcdcc1.chunk.css.map": "/SCL012-Social-Network-Frameworks/static/css/main.53fcdcc1.chunk.css.map",
-    "static/js/2.77259712.chunk.js.LICENSE.txt": "/SCL012-Social-Network-Frameworks/static/js/2.77259712.chunk.js.LICENSE.txt",
-    "static/media/SignIn.sass": "/SCL012-Social-Network-Frameworks/static/media/back-1.d5bba14d.jpg",
-    "static/media/logoBeer.png": "/SCL012-Social-Network-Frameworks/static/media/logoBeer.80204299.png",
-    "static/media/logoBeerWhite.png": "/SCL012-Social-Network-Frameworks/static/media/logoBeerWhite.4f7f3e48.png"
+    "main.css": "/static/css/main.7fd731b2.chunk.css",
+    "main.js": "/static/js/main.e6106bb3.chunk.js",
+    "main.js.map": "/static/js/main.e6106bb3.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.549be430.js",
+    "runtime-main.js.map": "/static/js/runtime-main.549be430.js.map",
+    "static/js/2.77259712.chunk.js": "/static/js/2.77259712.chunk.js",
+    "static/js/2.77259712.chunk.js.map": "/static/js/2.77259712.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.cd1eacf67aba5ad7fb7bdb323f5a731b.js": "/precache-manifest.cd1eacf67aba5ad7fb7bdb323f5a731b.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.7fd731b2.chunk.css.map": "/static/css/main.7fd731b2.chunk.css.map",
+    "static/js/2.77259712.chunk.js.LICENSE.txt": "/static/js/2.77259712.chunk.js.LICENSE.txt",
+    "static/media/SignIn.sass": "/static/media/back-1.d5bba14d.jpg",
+    "static/media/logoBeer.png": "/static/media/logoBeer.80204299.png",
+    "static/media/logoBeerWhite.png": "/static/media/logoBeerWhite.4f7f3e48.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.6d0256c7.js",
+    "static/js/runtime-main.549be430.js",
     "static/js/2.77259712.chunk.js",
-    "static/css/main.53fcdcc1.chunk.css",
-    "static/js/main.e1cfe567.chunk.js"
+    "static/css/main.7fd731b2.chunk.css",
+    "static/js/main.e6106bb3.chunk.js"
   ]
 }
