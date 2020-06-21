@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
 // import PropTypes from 'prop-types'
-import './CardPost.sass'
+import './CardPost.sass';
+import { postLike } from '../../Firebase/FirebaseFunctions';
+import Heart from './Heart';
 
-const CardPost = ({img, profilePic, author, likes, content, tags, zoom}) => {
+const CardPost = ({img, profilePic, author, likes, content, tags, zoom, id, currentUser}) => {
     return (
         <div className='divPost'>
             <img alt='Pic of the post' src={img} className='imgPost' onClick={zoom}/>    
@@ -17,8 +19,13 @@ const CardPost = ({img, profilePic, author, likes, content, tags, zoom}) => {
                         <h5 className='authorPost margin0'>{author}</h5>
                     </div>
                     <div className='likesDiv flexRow'>
-                        <h5 className='numLikes margin0'>{likes}</h5>
-                        <img alt='Button of like' src={require('../../img/heart.png')} className='heartLike'/>
+                        <h5 className='numLikes margin0'>{likes.length}</h5>
+                        { likes.includes(currentUser)
+                        ?
+                        <Heart className='heartLike likedPost' onClick={() => postLike(id, currentUser)}/>
+                        :
+                        <Heart className='heartLike' onClick={() => postLike(id, currentUser)}/>
+                        }
                     </div>
                 </div>
                 <p className='textPost margin0'>{content}</p>
