@@ -9,8 +9,8 @@ import {
   Switch,
   Route,
   Redirect
-} from "react-router-dom";
-import { auth } from './Firebase/ConfigFirebase'
+} from 'react-router-dom';
+import { db, auth } from './Firebase/ConfigFirebase'
 import { useDispatch } from 'react-redux'
 import { signUpAction } from './Actions/index'
 import ForgotPassword from './Components/ForgotPassword';
@@ -47,21 +47,27 @@ function App() {
   const PrivateRoute = ({component, path, ...rest}) => {
     const userLocal = localStorage.getItem('user')
     if(userLocal){
-      return <Route component={component} path={path} {...rest} />
-    }else{
-      return <Redirect to="/SignUp" {...rest} />
+      return <Route component={component} path={path} {...rest} />;
     }
+    return <Redirect to='/SignUp' {...rest} />;
   }
 
+  const allPosts = db.collection('posts').orderBy('time', 'desc');
+  const popularPosts = db.collection('posts').orderBy('like', 'desc');
+  
+
   return (
-    <div className="App">
+    <div className='App'>
        <Router>
           <Switch>
-            <Route exact path="/" component={Welcome} />
-            <Route path="/SignUp" component={SignUp} />
-            <Route path="/SignIn" component={SignIn} />
-            <Route path="/ForgotPassword" component={ForgotPassword} />
-            <PrivateRoute path="/Home" component={Home} />
+            <Route exact path='/' component={Welcome} />
+            <Route path='/SignUp' component={SignUp} />
+            <Route path='/SignIn' component={SignIn} />
+            <Route path='/ForgotPassword' component={ForgotPassword} />
+            <PrivateRoute path='/Home'
+              component={() => <Home postsToRender={allPosts} />} />
+            <PrivateRoute path='/MostPopular'
+              component={() => <Home postsToRender={popularPosts} />} />
           </Switch>
       </Router>    
     </div>

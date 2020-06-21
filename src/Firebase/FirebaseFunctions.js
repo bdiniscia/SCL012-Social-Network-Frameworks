@@ -29,7 +29,7 @@ const emailVerification = () => {
 const postLike = (id, user) => {
   console.log('Está entrando el postlike');
 
-  // de la collection post traeme el documento con el ID, "id"
+  // de la collection post traeme el documento con el ID, 'id'
   db.collection('posts').doc(id).get().then((query) => {
     const post = query.data();
 

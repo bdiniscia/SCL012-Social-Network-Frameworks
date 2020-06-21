@@ -11,7 +11,7 @@ const ZoomPost = (props) => {
     return (
         <div className='overlayZoom'>
             <div className='divZoom'>
-                <span className="closeZoom" onClick={props.closeZoom}>&times;</span>
+                <span className='closeZoom' onClick={props.closeZoom}>&times;</span>
                 <img alt='Pic of the post' src={postsStore[index].dataBeer.img} className='imgZoom' />
                 <div className='contentPost contentZoom'>
                     <div className='idPost flexRow'>

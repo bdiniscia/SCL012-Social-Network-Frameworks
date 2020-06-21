@@ -11,7 +11,7 @@ import ZoomPost from './Components/ZoomPost';
 import { postAction } from '../Actions/index'
 
 
-const Home = () => {
+const Home = ({postsToRender, ...props}) => {
     const [ showCreatePost, setShowCreatPost ] = useState(false);
     // const [ beerPost, setBeerPost ] = useState(false);
     const [ infoZoom, setInfoZoom ] = useState(null);
@@ -23,8 +23,7 @@ const Home = () => {
 
     // Trae los posts de Firebase
     useEffect(() => {
-        const postsUploaded = db.collection('posts').orderBy('time', 'desc');
-        postsUploaded.onSnapshot((querySnapshot) => {
+        postsToRender.onSnapshot((querySnapshot) => {
             const posts = [];
 
             querySnapshot.forEach(doc => {
