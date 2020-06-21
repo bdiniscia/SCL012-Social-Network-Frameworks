@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Button from './Components/Button'
-import { Link, useHistory } from "react-router-dom"
+import { Link, useHistory } from 'react-router-dom'
 import './SignIn.sass'
 import { firebase, auth } from '../Firebase/ConfigFirebase'
 import { useDispatch } from 'react-redux'
@@ -75,7 +75,7 @@ const SignIn = () => {
 
 
     return (
-        <div className="backgroungAuth">
+        <div className='backgroungAuth'>
             <div className='containerAuth'>
                 <Link to='/' className='link'>
                   <img alt='Logo of Beer Me Up' src={require('../img/logoBeer.png')} className='logoAuth' />

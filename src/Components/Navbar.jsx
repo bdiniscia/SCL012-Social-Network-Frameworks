@@ -1,11 +1,13 @@
-import React, { useState, useRef, Fragment } from 'react'
-import './Navbar.sass'
-import { useSelector } from 'react-redux'
-import defaultProfilePic from '../img/user.png'
-import { closeSession } from '../Firebase/FirebaseFunctions'
-import SvgPlus from './Components/Plus'
-import Heart from './Components/Heart'
-import SvgStar from './Components/Star'
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import React, { useState, Fragment } from 'react';
+import './Navbar.sass';
+import defaultProfilePic from '../img/user.png';
+import { closeSession } from '../Firebase/FirebaseFunctions';
+import SvgPlus from './Components/Plus';
+import Heart from './Components/Heart';
+import SvgStar from './Components/Star';
 
 const Navbar = (props) => {
 
@@ -22,14 +24,27 @@ const Navbar = (props) => {
     return (
         <Fragment>
             <nav className='divNavbar'>
-                <img alt='Logo of Beer Me Up' src={require('../img/logoBeerWhite.png')} className='logoNavbar' />
+                <Link to='/Home'>
+                    <img alt='Logo of Beer Me Up' src={require('../img/logoBeerWhite.png')} className='logoNavbar' />
+                </Link>
                 <div className='divIconsNavbar'>
-                    <SvgPlus onClick={props.showModal} className='svgNavbar' />
-                    <Heart className='svgNavbar' width="2.3em" height="2.3em"/>
-                    <SvgStar className='svgNavbar' />
+                    <div className='itemMenu' >
+                        <SvgPlus onClick={props.showModal} className='svgNavbar' />
+                        <span class='tooltiptext'>Crear post</span>
+                    </div>
+                    <div className='itemMenu' >
+                        <Heart className='svgNavbar' width='2.3em' height='2.3em'/>
+                        <span class='tooltiptext'>Me gustan</span>
+                    </div>
+                    <div className='itemMenu' >
+                        <Link to='/MostPopular' >
+                            <SvgStar className='svgNavbar' />
+                        </Link>
+                        <span class='tooltiptext'>Populares</span>
+                    </div>
                     <div className='dropdown'>
                         <img alt='Profile' src={photoURL} className='iconsNavbar picProfile' />
-                        <div className="dropdown-content">
+                        <div className='dropdown-content'>
                             <p>Ver mi perfil</p>
                             <p onClick={() => closeSession()}>Cerrar Sesión</p>
                         </div>
@@ -38,8 +53,10 @@ const Navbar = (props) => {
             </nav>
             <nav className='bottomNavbar'>
                 <SvgPlus onClick={props.showModal} className='svgNavbar' />
-                <Heart className='svgNavbar' width="2.3em" height="2.3em"/>
-                <SvgStar className='svgNavbar' />
+                <Heart className='svgNavbar' width='2.3em' height='2.3em'/>
+                <Link to='/MostPopular' >
+                    <SvgStar className='svgNavbar' />
+                </Link>
             </nav>
         </Fragment>
 

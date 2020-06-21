@@ -81,10 +81,10 @@ const Modal = (props) => {
             <div className="modal-content">
                 <span className="close" onClick={props.closeModal}>&times;</span>
                 <textarea onChange={e => handleChangeText(e)} className='textareaModal' placeholder='Cuéntanos... ¿Qué tal tu cerveza de hoy?'/>
-                <div className='file-div'>
+                {/* <div className='file-div'>
                     <label name="tag-post" >Etiqueta: </label>
                     <input name="tag-post" onChange={e => handleChangeTag(e)} className="tag-post" type="text" placeholder="Ejemplo: #Artesanal"/>
-                </div>
+                </div> */}
                 <div className='file-div'>
                     <input type='file' onChange={e => handleChangeImage(e)}/>
                     <progress value={progress} max="100" />
